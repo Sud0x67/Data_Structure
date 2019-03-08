@@ -6,7 +6,10 @@ Status compare(Element c, Element c2)//compare函数
 {
 	return c == c2;
 }
-
+void print_e(Element *c)
+{
+	printf("\t%d", *c);
+}
 
 int main()
 {
@@ -72,7 +75,54 @@ int main()
 	}
 	printf("链表L的地址为L：%d；长度为L->data：%d；是否为空：%d\n", L, listLength(L), listEmpty(L));
 	//测试insert
-	printf("测试insert");
-	
+	printf("测试insert\n");
+	getchar();
+	listTraverse(L, print_e);
+	printf("链表L的地址为L：%d；长度为L->data：%d；是否为空：%d\n", L, listLength(L), listEmpty(L));
+	for (int i = 1; i <= 100; i++)
+	{
+		int s = listInsert(L, i, i);
+		if (s == ERROR)
+		{
+			printf("在%d处插入失败\n", i);
+		}
+	}
+
+	int s = listInsert(L, 0, 1);
+	if (s == ERROR)
+	{
+		printf("在%d处插入失败\n", 0);
+	}
+	getchar();
+	listTraverse(L, print_e);
+	printf("链表L的地址为L：%d；长度为L->data：%d；是否为空：%d\n", L, listLength(L), listEmpty(L));
+	//测试delete
+	printf("测试delete\n");
+	getchar();
+	listTraverse(L, print_e);
+	printf("链表L的地址为L：%d；长度为L->data：%d；是否为空：%d\n", L, listLength(L), listEmpty(L));
+	for (int i = 1; i <= 100; i++)
+	{
+		int s = listDelete(L, i, &e);
+		if (s == ERROR)
+		{
+			printf("在%d处删除失败\n", i);
+		}else
+		{
+			printf("%d\n", e);
+		}
+	}
+
+	s = listDelete(L, 120, &e);
+	if (s == ERROR)
+	{
+		printf("在%d处删除失败\n", 120);
+	}
+	else
+	{
+		printf("%d\n", e);
+	}
+	listTraverse(L, print_e);
+	printf("链表L的地址为L：%d；长度为L->data：%d；是否为空：%d\n", L, listLength(L), listEmpty(L));
 	system("pause");
 }

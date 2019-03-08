@@ -31,6 +31,9 @@ Status getElement(linkList L, int i, Element * e);
 int locateElement(linkList L, Element e, Status(*compare)(Element, Element));
 Status getPriorElement(linkList L, Element e, Element * pre_e);
 Status nextElement(linkList L, Element e, Element * pre_e);
+Status listInsert(linkList L, int i, Element e);
+Status listDelete(linkList L, int i, Element * e);
+Status listTraverse(linkList L, void(*visit)(Element *));
 #endif // !LINKLIST_H
 
 

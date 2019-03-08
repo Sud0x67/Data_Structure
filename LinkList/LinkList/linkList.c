@@ -121,8 +121,9 @@ Status nextElement(linkList L, Element e, Element* next_e)
 }
 Status listInsert(linkList L, int i, Element e)//插入一个元素
 {
+	if (i<1 || i>L->data + 1)return ERROR;
 	int j = 1; 
-	linkList p = L->next;
+	linkList p = L;
 	for (j = 1; j <i; j++)
 	{
 		p = p->next;
@@ -131,12 +132,25 @@ Status listInsert(linkList L, int i, Element e)//插入一个元素
 	q->data = e;
 	q->next = p->next;
 	p->next = q;
-
+	L->data++;
+	return OK;
 }
 //删除一个元素，并把删除的元素赋值给e
 Status listDelete(linkList L, int i, Element *e)
 {
-	
+	if (i<1 ||i>L->data)return ERROR;
+	int j = 1;
+	linkList p = L;
+	for (j = 1; j <i; j++)
+	{
+		p = p->next;
+	}
+	linkList q = p->next;
+	*e = q->data;
+	p->next = p->next->next;
+	free(q);
+	L->data--;
+	return OK;
 }
 //遍历数据表
 Status listTraverse(linkList L, void(*visit)(Element*))
@@ -147,4 +161,5 @@ Status listTraverse(linkList L, void(*visit)(Element*))
 		visit(&(p->data));
 		p = p->next;
 	}
+	return OK;
 }
