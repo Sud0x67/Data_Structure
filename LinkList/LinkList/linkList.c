@@ -2,7 +2,6 @@
 #include"PreDefined.h"
 #include "linkList.h"
 //
-
 //初始化如果要改变一个指针的值请传入一个指针的指针，小孩子应该懂礼貌
 Status initList(linkList *L)
 {
