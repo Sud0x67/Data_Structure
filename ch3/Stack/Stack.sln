@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkList_Full", "..\..\ch2\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkList", "..\..\ch2\LinkList\LinkList\LinkList.vcxproj", "{386E5307-97CC-4682-82DC-35C0D3B1CEB3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithm3_1", "Algorithm3_1\Algorithm3_1.vcxproj", "{12E97B4A-2E09-428A-8DA6-F2C7C110DC68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{386E5307-97CC-4682-82DC-35C0D3B1CEB3}.Release|x64.Build.0 = Release|x64
 		{386E5307-97CC-4682-82DC-35C0D3B1CEB3}.Release|x86.ActiveCfg = Release|Win32
 		{386E5307-97CC-4682-82DC-35C0D3B1CEB3}.Release|x86.Build.0 = Release|Win32
+		{12E97B4A-2E09-428A-8DA6-F2C7C110DC68}.Debug|x64.ActiveCfg = Debug|x64
+		{12E97B4A-2E09-428A-8DA6-F2C7C110DC68}.Debug|x64.Build.0 = Debug|x64
+		{12E97B4A-2E09-428A-8DA6-F2C7C110DC68}.Debug|x86.ActiveCfg = Debug|Win32
+		{12E97B4A-2E09-428A-8DA6-F2C7C110DC68}.Debug|x86.Build.0 = Debug|Win32
+		{12E97B4A-2E09-428A-8DA6-F2C7C110DC68}.Release|x64.ActiveCfg = Release|x64
+		{12E97B4A-2E09-428A-8DA6-F2C7C110DC68}.Release|x64.Build.0 = Release|x64
+		{12E97B4A-2E09-428A-8DA6-F2C7C110DC68}.Release|x86.ActiveCfg = Release|Win32
+		{12E97B4A-2E09-428A-8DA6-F2C7C110DC68}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

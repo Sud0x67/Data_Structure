@@ -15,18 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="test.c">
+    <ClCompile Include="convertion.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Stack.c">
+    <ClCompile Include="..\Stack\Stack.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PreDefined.h">
+    <ClInclude Include="..\Stack\Stack.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Stack.h">
+    <ClInclude Include="..\Stack\PreDefined.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
