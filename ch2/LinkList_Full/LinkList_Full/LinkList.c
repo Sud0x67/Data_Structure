@@ -16,8 +16,9 @@ int len;
 Status makeNode(Link *p,ElemType e)
 {
 	(*p) = (Link)malloc(sizeof(struct LNode));
-	if (!*p)return(OVERFLOW);
+	if (!*p)return OVERFLOW;
 	(*p)->data = e;
+	(*p)->next = NULL;
 	return OK;
 }
 //指针指向的内容释放后，指针记得置为NULL
@@ -30,9 +31,8 @@ Status initList(LinkList *L)
 {
 	Link p;
 	Status i;
-	if (i= makeNode(p, 0))
+	if (i= makeNode(&p, 0))
 	{
-		//p->next=NULL
 		L->head = p;
 		L->tail = p;
 		L->len = 0;
@@ -40,98 +40,116 @@ Status initList(LinkList *L)
 	}
 	return i;
 }
-Status destroyList(LinkList L)
+Status destroyList(LinkList *L)
 {
-	Link q,p=L.head;
-	while (p!=L.tail)
+	Link q,p=(*L).head;
+	while (p!=NULL)
 	{
 		q = p;
 		p = p->next;
 		free(q);
 	}
-	free(p);
-	L.len = 0;
-	L.head = NULL;
-	L.tail = NULL;
+	(*L).len = 0;
+	(*L).head = NULL;
+	(*L).tail = NULL;
 	return OK;
 }
-Status clearList(LinkList L)
+Status clearList(LinkList *L)
 {
-	Link q, p = L.head->next;
-	while (p != L.tail)
+	Link q, p = (*L).head->next;
+	while (p != NULL)
 	{
 		q = p;
 		p = p->next;
 		free(q);
 	}
-	free(p);
-	L.tail = L.head;
-	L.len = 0;
+	(*L).head->next = NULL;
+	(*L).tail = (*L).head;
+	(*L).len = 0;
 	return OK;
 }
-Status inFirst(LinkList L, Link h, Link s)
+//h指向线性表的头结点，将s插入在头结点之后，第一个结点之前；
+Status inFirst(LinkList *L, Link h, Link s)
 {
 	s->next= h->next;
 	h ->next = s;
-	if (h == L.tail) /* h指向尾结点 */
-		L.tail = h->next; /* 修改尾指针 */
-	L.len++;
+	if (h == (*L).tail) /* h指向尾结点 */
+		(*L).tail = h->next; /* 修改尾指针 */
+	(*L).len++;
 	return OK;
 }
-Status delFirst(LinkList L,Link h, Link *q)
+//h指向线性表的头结点，，删除链表中第一个结点；
+Status delFirst(LinkList *L,Link h, Link *q)
 {
 	////////
+	if (!h->next)return ERROR;
 	*q = h->next;
 	h->next = h->next->next;
+	(*L).len--;
 	return OK;
 }
-Status append(LinkList L, Link s)
+//将s所指的一串结点（没有头结点），接在链表L之后
+Status append(LinkList *L, Link s)
 {
-	L.tail->next= s;
-	L.len++;
+	(*L).tail->next= s;
 	Link p = s;
 	while (p->next!=NULL)
 	{
 		p = p->next;
-		L.len++;
+		(*L).len++;
 	}
-	L.tail = p;
+	(*L).tail = p;
 	return OK;
 }
-Status Remove(LinkList L, Link *q)
+///test2
+//删除尾节点以q返回，改变尾指针
+//remove nnnnnnnnnnnnnnn
+Status remove(LinkList *L, Link *q)
 {
-	*q = L.tail;
-	L.len--;
-	for (int i = 1; i <= L.len; i++)
+	if ((*L).tail==(*L).head) return ERROR;
+	(*q) = (*L).tail;
+	(*L).len--;
+	Link p= (*L).head;
+	for (int i = 1; i <= (*L).len; i++)
 	{
-		L.tail = L.head->next;
+		p = p->next;
 	}
+	p->next = NULL;
+	(*L).tail = p;
+	return OK;
 }
-Status insBefore(LinkList L, Link *p, Link s)
+//已知p指向L中的一个结点，将S插入p结点之前,并改变p的指向指向s
+Status insBefore(LinkList *L, Link *p, Link *s)
 {
-	Link q = L.head;
-	while (q->next != (*p))
+	Link q = L->head;
+	while (q!=NULL&&q->next != (*p))
 	{
 		q = q->next;
 	}
-	q ->next = s;
-	s->next = (*p);
-	(*p) = s;
-	L.len++;
+	if (!q)return ERROR;
+	q ->next = *s;
+	(*s)->next = (*p);
+	(*p) = *s;
+	L->len++;
 	return OK;
 }
-Status insAfter(LinkList L, Link *p, Link s)
+//已知p指向L中的一个结点，将S插入p结点之后,并改变p的指向指向s
+Status insAfter(LinkList *L, Link *p, Link *s)
 {
-	s->next = (*p)->next;
-	(*p)->next = s;
-	(*p) = s;
+	if (L->tail == *p)L->tail = *s;
+	(*s)->next = (*p)->next;
+	(*p)->next = *s;
+	(*p) = *s;
+	L->len++;
 	return OK;
 }
+//修改p结点的值
 Status setCurrentElement(Link p, ElemType e)
 {
 	p->data = e;
 	return OK;
 }
+//返回p结点的值
 ElemType getCurrentElement(Link p)
 {
 	return p->data;
@@ -156,15 +174,16 @@ Position getLast(LinkList L)
 Position priorPos(LinkList L, Link p)
 {
 	Link q = L.head;
-	while (q->next != p)
+	while (q!=NULL&&q->next != p)
 	{
 		q = q->next;
 	}
-	if (q == L.head)return NULL;
+	if (q == NULL|| q == L.head)return NULL;
 	return q;
  }
 Position nextPos(LinkList L, Link p)
 {
+	if (!p)return NULL;
 	return p->next;
 }
 Status LocatePos(LinkList L, int i, Link *p)
