@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include <malloc.h>
 #include"PreDefined.h"
 #include "LinkList.h"
 //没有增加测试，太狗血了这个以后更新吧
@@ -88,11 +89,12 @@ Status delFirst(LinkList *L,Link h, Link *q)
 	(*L).len--;
 	return OK;
 }
-//将s所指的一串结点（没有头结点），接在链表L之后
+//将s所指的一串结点（没有头结点），接在链表L之后//修复了一条计数错误
 Status append(LinkList *L, Link s)
 {
 	(*L).tail->next= s;
 	Link p = s;
+	(*L).len++;
 	while (p->next!=NULL)
 	{
 		p = p->next;
@@ -106,7 +108,7 @@ Status append(LinkList *L, Link s)
 //remove nnnnnnnnnnnnnnn
 Status remove(LinkList *L, Link *q)
 {
-	if ((*L).tail==(*L).head) return ERROR;
+	if (L->tail==L->head) return ERROR;
 	(*q) = (*L).tail;
 	(*L).len--;
 	Link p= (*L).head;
@@ -210,7 +212,7 @@ Position locateElement(LinkList L, ElemType e, Status(*compare)(ElemType, ElemTy
 	}
 	else
 	{
-		return INFEASIBLE;
+		return NULL;
 	}
 }
 Status listTraverse(LinkList L, void(*visit)(ElemType*))

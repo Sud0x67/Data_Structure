@@ -1,5 +1,6 @@
 #pragma once
 #ifndef LINKLIST_H
+#define LINKLIST_H
 //之前链表中类型均为Element，现与书中保持一致
 typedef int ElemType;
 typedef struct LNode {//结点类型
@@ -18,9 +19,7 @@ Status clearList(LinkList *L);
 Status inFirst(LinkList * L, Link h, Link s);
 Status delFirst(LinkList * L, Link h, Link * q);
 Status append(LinkList * L, Link s);
-
 Status remove(LinkList * L, Link * q);
-
 Status insBefore(LinkList * L, Link * p, Link * s);
 
 Status insAfter(LinkList * L, Link * p, Link * s);
