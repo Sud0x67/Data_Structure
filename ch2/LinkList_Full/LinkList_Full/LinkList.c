@@ -180,7 +180,7 @@ Position priorPos(LinkList L, Link p)
 	{
 		q = q->next;
 	}
-	if (q == NULL|| q == L.head)return NULL;
+	if (q == NULL)return NULL;
 	return q;
  }
 Position nextPos(LinkList L, Link p)
