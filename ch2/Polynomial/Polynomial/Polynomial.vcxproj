@@ -142,6 +142,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ElemType.h" />
+    <ClInclude Include="LinkList.h" />
+    <ClInclude Include="Polynomial.h" />
+    <ClInclude Include="PreDefined.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LinkList.c" />
+    <ClCompile Include="Polynomial.c" />
+    <ClCompile Include="test.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

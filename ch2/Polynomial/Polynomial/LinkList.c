@@ -2,8 +2,7 @@
 #include <malloc.h>
 #include"PreDefined.h"
 #include "LinkList.h"
-//没有增加测试，太狗血了这个以后更新吧
-//定义完整的链表
+//针对有序链表更新了LocateElement函数，增加了0rderInsert函数
 /*
 typedef struct LNode {//结点类型
 ElemType data;
@@ -32,7 +31,8 @@ Status initList(LinkList *L)
 {
 	Link p;
 	Status i;
-	if (i= makeNode(&p, 0))
+	ElemType e = { .0,0 };
+	if (i= makeNode(&p, e))
 	{
 		L->head = p;
 		L->tail = p;
@@ -83,10 +83,12 @@ Status inFirst(LinkList *L, Link h, Link s)
 Status delFirst(LinkList *L,Link h, Link *q)
 {
 	////////
-	if (!h->next) {
+	if (!h->next)
+	{
 		*q = NULL;
 		return ERROR;
 	}
+		
 	*q = h->next;
 	h->next = h->next->next;
 	(*L).len--;
@@ -203,21 +205,7 @@ Status LocatePos(LinkList L, int i, Link *p)
 	(*p) = ptr;
 	return OK;
 }
-Position locateElement(LinkList L, ElemType e, Status(*compare)(ElemType, ElemType))
-{
-	Link p = L.head->next;
-	while (p!=NULL&&(*compare)(e, p->data) != TRUE)
-	{
-		p = p->next;
-	}
-	if (p!=NULL) {
-		return p;
-	}
-	else
-	{
-		return NULL;
-	}
-}
+
 Status listTraverse(LinkList L, void(*visit)(ElemType*))
 {
 	Link p = L.head->next;
@@ -228,3 +216,52 @@ Status listTraverse(LinkList L, void(*visit)(ElemType*))
 	}
 	return OK;
 }
+//LocateElement若存在返回TRUE 否则返回第一个>0的位置的直接前驱，并返回False；
+Status locateElement(LinkList L, ElemType e, Position *q, Status(*compare)(ElemType, ElemType))
+{
+	Link p = L.head->next;
+	while (p != NULL)
+	{
+		if ((*compare)(e, p->data) == 0)break;
+		p = p->next;
+	}
+	if (p != NULL) {
+		*q = p;
+		return TRUE;
+	}
+	else
+	{
+		Link ptr = L.head;
+		Link p = L.head->next;
+		while (p != NULL)
+		{
+			if ((*compare)(p->data, e) > 0)break;
+			ptr = p;
+			p = p->next;
+		}
+		*q = ptr;
+		return FALSE;
+	}
+}
+
+Status orderInsert(LinkList *L, ElemType e, Status(*compare)(ElemType, ElemType))
+{
+	Link p,q;
+	
+	Status flag = locateElement(*L, e, &q, compare);
+	//如果存在相同指数的项进行合并，不存在进行添加；
+	if (flag)
+	{
+		q->data.coef += e.coef;
+		if (q->data.coef == 0)
+		{
+			p = priorPos(*L, q);
+			delFirst(L, p, &q);
+		}
+	}
+	else 
+	{
+		makeNode(&p, e);
+		insAfter(L, &q, &p);
+	}
+ }
