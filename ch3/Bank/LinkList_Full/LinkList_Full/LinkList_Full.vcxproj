@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{950FC9A7-F155-4AEF-92E7-3DA51AE04128}</ProjectGuid>
+    <ProjectGuid>{88EEAA84-3290-4BBA-8E6B-084BB7DDDB08}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Polynomial</RootNamespace>
+    <RootNamespace>LinkList_Full</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -142,16 +142,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ElemType.h" />
     <ClInclude Include="LinkList.h" />
-    <ClInclude Include="Polynomial.h" />
     <ClInclude Include="PreDefined.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LinkList.c" />
-    <ClCompile Include="Polynomial.c" />
     <ClCompile Include="test.c" />
-    <ClCompile Include="源.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
