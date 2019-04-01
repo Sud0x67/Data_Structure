@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2577334F-D7B7-40B4-BF83-EF93ED884A38}</ProjectGuid>
+    <ProjectGuid>{1833FC1F-99FD-4DEE-961E-FC79C1B2A55D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>string</RootNamespace>
+    <RootNamespace>HString</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -88,7 +88,6 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>false</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,10 +142,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="LString.h" />
     <ClInclude Include="PreDefined.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SString.c" />
+    <ClCompile Include="HString.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
