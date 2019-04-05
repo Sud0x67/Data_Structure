@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string", "string\string.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HString", "HString\HString.vcxproj", "{1833FC1F-99FD-4DEE-961E-FC79C1B2A55D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KMP", "KMP\KMP.vcxproj", "{2F1E570D-8105-4CD7-A85F-767E6DB2A37F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{1833FC1F-99FD-4DEE-961E-FC79C1B2A55D}.Release|x64.Build.0 = Release|x64
 		{1833FC1F-99FD-4DEE-961E-FC79C1B2A55D}.Release|x86.ActiveCfg = Release|Win32
 		{1833FC1F-99FD-4DEE-961E-FC79C1B2A55D}.Release|x86.Build.0 = Release|Win32
+		{2F1E570D-8105-4CD7-A85F-767E6DB2A37F}.Debug|x64.ActiveCfg = Debug|x64
+		{2F1E570D-8105-4CD7-A85F-767E6DB2A37F}.Debug|x64.Build.0 = Debug|x64
+		{2F1E570D-8105-4CD7-A85F-767E6DB2A37F}.Debug|x86.ActiveCfg = Debug|Win32
+		{2F1E570D-8105-4CD7-A85F-767E6DB2A37F}.Debug|x86.Build.0 = Debug|Win32
+		{2F1E570D-8105-4CD7-A85F-767E6DB2A37F}.Release|x64.ActiveCfg = Release|x64
+		{2F1E570D-8105-4CD7-A85F-767E6DB2A37F}.Release|x64.Build.0 = Release|x64
+		{2F1E570D-8105-4CD7-A85F-767E6DB2A37F}.Release|x86.ActiveCfg = Release|Win32
+		{2F1E570D-8105-4CD7-A85F-767E6DB2A37F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
